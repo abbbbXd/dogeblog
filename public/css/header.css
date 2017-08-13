@@ -1,0 +1,14 @@
+.cover-container{
+	margin-right: auto;
+	margin-left: auto;
+	height: 8rem;
+	position: fixed;
+	left: 0;
+	right: 0;
+	display: block;
+}
+
+.container{
+	position: relative;
+	top: 8rem;
+}

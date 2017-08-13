@@ -1,0 +1,9 @@
+module.exports = {
+	'dbConfig':{
+		'host':'localhost',
+		'port':27017,
+		'dbName':'DogeBlog',
+		'user':'app',
+		'pwd':'app123456'
+	}
+}
