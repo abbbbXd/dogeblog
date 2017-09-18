@@ -54,13 +54,13 @@ body{
 	color: white;
 }
 
-.content{
+.home-content{
 	background-color: #333;
 	margin: 250px auto 340px;
 	text-align: center;
 }
 
-.content h1{
+.home-content h1{
 	font-weight: 500;
 	font-family: Verdana;
 	color: white;
@@ -69,7 +69,7 @@ body{
 	font-size: 36px;
 }
 
-.content h1:after{
+.home-content h1:after{
 	content: '';
 	display: block;
 	height: 1px;
@@ -180,18 +180,34 @@ body{
 	clear: both;
 }
 */
-.container h3:before{
+
+/*.container h3:before{*/
 	content: '';
 	display: block;
 	height: 1px;
 	width: inherit;
 	background-color: white;
 	margin: 15px auto;
-}
+/*}*/
 
 .line{
 	height:1px;
     border-top: solid 1px black;
     margin: 10px 350px;
     text-align: center;
+}
+
+.content{
+	margin: 30px 350px;
+	padding: 0 0 10px;
+	text-align: left;
+	border-bottom: 1px dashed white;
+	position: relative;
+}
+
+.content h1,h2,h3{
+	padding: 0 0 .2em;
+	color: black;
+	font-weight: 500px;
+	letter-spacing: -0.03em;
 }
