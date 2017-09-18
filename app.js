@@ -5,11 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var index = require('./routes/test');
 var users = require('./routes/users');
 var blog = require('./routes/blog');
 var about = require('./routes/about.js');
 var contact = require('./routes/contact.js');
+var test = require('./routes/test.js');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/test',test);
 app.use('/users', users);
 app.use('/blog',blog);
 app.use('/about',about);
