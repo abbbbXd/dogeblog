@@ -104,6 +104,13 @@ body{
   transform: scale(1.2);
 }
 
+.label-wrap:after {
+    display: block;
+    content: '';
+    font-size: 0;
+    clear: both;
+}
+
 .label{
 	display: inline;
 	font-size: 75%;
