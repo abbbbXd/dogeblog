@@ -1,0 +1,53 @@
+<!-- header -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/test.css">
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+</head>
+<body>
+	<div class='head'>
+	<span>Doge</span>
+		<ul>
+			<li><a class='active' href="/">Home</a></li>
+			<li><a href="/Blog">Blog</a></li>
+			<li><a href="/About">About</a></li>
+			<li><a href="/SaySomething">SaySomething</a></li>
+		</ul>
+	</div>
+
+	<div class='content'>
+		<h1>Doge Blog</h1>
+		<p class='abstract'>To live is to change the world</p>
+		<div class='img'>
+			<a href="http://www.github.com/abbbbXd">
+				<img id='git' class='large' src="/images/fluidicon.png">
+			</a>
+		</div>
+	</div>
+
+<!-- footer -->
+	<script>
+	var pathName = window.location.pathname;
+	$('.head ul>li>a').each(function(){
+		if($(this).attr('href')===pathName)
+		{
+			{
+				$('.head ul>li>a.active').removeClass('active');
+				$(this).addClass('active');
+			}
+		}
+	})
+	$('.head ul>li>a:not(.active)').hover(      // !!!!!!!!!!!!!!!!!!!!!!
+		function(){
+			$(this).css({'border-bottom':'solid 2px #666'});
+		},
+		function(){
+			$(this).css({'border-style':'none'});
+		}
+	)
+	</script>
+</body>
+</html>

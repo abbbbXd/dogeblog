@@ -1,0 +1,23 @@
+	<!-- footer -->
+	<script>
+	var pathName = window.location.pathname;
+	$('.head ul>li>a').each(function(){
+		if($(this).attr('href')===pathName)
+		{
+			{
+				$('.head ul>li>a.active').removeClass('active');
+				$(this).addClass('active');
+			}
+		}
+	})
+	$('.head ul>li>a:not(.active)').hover(                 ////////// !!!!!!!!!!!!!!!!!!!!!!
+		function(){
+			$(this).css({'border-bottom':'solid 2px #666'});
+		},
+		function(){
+			$(this).css({'border-style':'none'});
+		}
+	)
+	</script>
+</body>
+</html>
