@@ -26,7 +26,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 app.use('/', test);
+=======
+app.use('/', index);
+>>>>>>> 4a12ac2210d8b56baffac128a37046067afba3b5
 app.use('/test',test);
 app.use('/users', users);
 app.use('/blog',blog);

@@ -73,7 +73,10 @@ body{
 	content: '';
 	display: block;
 	height: 1px;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 4a12ac2210d8b56baffac128a37046067afba3b5
 	width: 150px;
 	margin: 15px auto 0px;
 	background-color: black;
@@ -82,7 +85,10 @@ body{
 .abstract{
 	margin: 0 auto 10px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a12ac2210d8b56baffac128a37046067afba3b5
 #git{
 	width:50px;
 	height: 50px;
@@ -103,6 +109,7 @@ body{
 
 .large:hover{
   transform: scale(1.2);
+<<<<<<< HEAD
 }
 
 .label{
@@ -195,4 +202,6 @@ body{
     border-top: solid 1px black;
     margin: 10px 350px;
     text-align: center;
+=======
+>>>>>>> 4a12ac2210d8b56baffac128a37046067afba3b5
 }
