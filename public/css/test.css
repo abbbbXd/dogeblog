@@ -105,10 +105,10 @@ body{
 }
 
 .label-wrap:after {
-    display: block;
-    content: '';
-    font-size: 0;
-    clear: both;
+	display: block;
+	content: '';
+	font-size: 0;
+	clear: both;
 }
 
 .label{
@@ -130,8 +130,8 @@ body{
 }
 .label-default{
 	background-color: #777;
-	float: right;
 	margin: auto .3em;
+	float: right;
 }
 .label-primary{
 	background-color: #428bca;
@@ -168,12 +168,14 @@ body{
 .container h1{
 	text-align: left;
 	font-weight: normal;
-	margin: 3px auto;
+	margin: 5px auto 10px;
+	border-bottom: 2px solid black;
 }
 
 .container p{
 	text-align: left;
-	margin-bottom: 10px;
+	margin: 10px auto;
+	font-size: 18px;
 }
 
 /*.container:after{
@@ -188,22 +190,6 @@ body{
 }
 */
 
-/*.container h3:before{*/
-	content: '';
-	display: block;
-	height: 1px;
-	width: inherit;
-	background-color: white;
-	margin: 15px auto;
-/*}*/
-
-.line{
-	height:1px;
-    border-top: solid 1px black;
-    margin: 10px 350px;
-    text-align: center;
-}
-
 .content{
 	margin: 30px 350px;
 	padding: 0 0 10px;
@@ -217,4 +203,27 @@ body{
 	color: black;
 	font-weight: 500px;
 	letter-spacing: -0.03em;
+}
+
+span.hint {
+	color: grey;
+}
+
+textarea {
+	border: 1px solid #d3d3d3;
+	background-color: #f5f4df;
+	padding: .5em;
+	width: 90%;
+}
+
+input {
+	border: 1px solid #d3d3d3;
+	background-color: #f5f4df;
+	line-height: 1.2;
+	padding: .4em .3em;
+}
+
+input#comment-submit {
+	width: 10em;
+	text-align: center;
 }
