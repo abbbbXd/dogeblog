@@ -20,9 +20,30 @@
 	</div>
 	
 	<input type="submit" value="发表" id="comment-submit"><span class="hint">«-点击按钮</span>
-</div
+</div>
 
-
+<script>
+	$('#comment-submit').click(function(){
+		$.ajax({
+		type: 'post',
+		url: '/saysomething/getData',
+		dataType: 'json',
+		data: {
+			name: $('input #comment-author').val(),
+			message: $('input #comment-text').val(),
+			contact: $('input #comment-contact').val()
+		},
+		success:function(data){
+			if(data.status == 'success'){
+				alert('发表成功！');
+			}
+			else{
+				alert('发表失败！');
+			}
+		}
+	})	
+})
+</script>
 
 
 <%- include('footer') -%>
