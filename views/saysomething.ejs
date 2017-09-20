@@ -1,48 +1,112 @@
 <%- include('header') -%>
 
+<script type="text/javascript" src='./js/jquery.validate.min.js'></script>
+<!-- <script type="text/javascript" src='./js/messages_zh.min.js'></script> -->
+
 <div class="container">
-	<h1>我要留言</h1>
-	<div class="line"></div>
-	<div>
-		<p>您的留言<</p>
-		<p><textarea id='comment-text' name='text' rows='10' cols='50'></textarea></p>
-	</div>
-	<div>
-		<p>您的大名：</p>
-		<input id="comment-author" name='author' size='30' value></input><span class = 'hint'>«-必填</span>
-	</div>
-	<div>
-		<p>联系方式：</p>
-		<input id="comment-contact" name='contact' size='30' value></input><span class = 'hint'>«-必填，不公开（邮箱，QQ，电话均可）</span>
-	</div>
-	<div>
-		<p><label for='comment-bake-cookie'>记住个人信息？</label><input type="checkbox" id="comment-bake-cookie"></p>
-	</div>
-	
-	<input type="submit" value="发表" id="comment-submit"><span class="hint">«-点击按钮</span>
+	<form action="/saysomething/getdata" method='post' id='form'>
+		<h1>我要留言</h1>
+		<div class="line"></div>
+		<div>
+			<p>您的留言<</p>
+			<p><textarea id='comment-text' name='text' rows='10' cols='50' value placeholder="-必填"></textarea><span></span></p>
+		</div>
+		<div>
+			<p>您的大名：</p>
+			<input id="comment-author" name='author' size='30' value placeholder="-必填"><span></span>
+		</div>
+		<div>
+			<p>电子邮件：</p>
+			<input id="comment-email" name='email' size='30' value placeholder="-必填,不公开"><span></span>
+		</div>
+		<div>
+			<p><label for='comment-bake-cookie'>记住个人信息？</label><input type="checkbox" id="comment-bake-cookie"></p>
+		</div>
+		
+		<input type="submit" value="发表" id="comment-submit"><span class="hint">«-点击按钮</span>
+	</form>
 </div>
 
 <script>
-	$('#comment-submit').click(function(){
-		$.ajax({
-		type: 'post',
-		url: '/saysomething/getData',
-		dataType: 'json',
-		data: {
-			name: $('input #comment-author').val(),
-			message: $('input #comment-text').val(),
-			contact: $('input #comment-contact').val()
-		},
-		success:function(data){
-			if(data.status == 'success'){
-				alert('发表成功！');
-			}
-			else{
-				alert('发表失败！');
-			}
+// 	$('#comment-submit').click(function(){
+// 		$.ajax({
+// 		type: 'post',
+// 		url: '/saysomething/getData',
+// 		dataType: 'json',
+// 		data: {
+// 			name: $('input #comment-author').val(),
+// 			message: $('input #comment-text').val(),
+// 			email: $('input #comment-email').val()
+// 		},
+// 		success:function(data){
+// 			if(data.status == 'success'){
+// 				alert('发表成功！');
+// 			}
+// 			else{
+// 				alert('发表失败！');
+// 			}
+// 		}
+// 	})	
+// })
+	var isTextOk = false;
+	var isAuthorOk = false;
+	var isEmailOk = false;
+
+	var emailReg = /^[A-Za-z0-9]+([A-Za-z0-9_-]+)@[a-zA-Z0-9]+(\.[a-zA-Z]+)$/;
+
+	$('textarea[name=text]').blur(function(){
+		if($(this).val().trim()==''){
+			$(this).next().html('请输入您的留言');
+			$(this).next().attr('class', 'error');
 		}
-	})	
-})
+		else{
+			$(this).next().html('');
+			isTextOk = true;
+		}
+	});
+
+	$('input[name=author]').blur(function(){
+		if($(this).val().trim() == ''){
+			$(this).next().html('请输入您的大名');
+			$(this).next().attr('class', 'error');
+		}
+		else{
+			$(this).next().html('用户名OK');
+			$(this).next().attr('class', 'success');
+
+			isAuthorOk = true;
+		}
+	});
+
+	$('input[name=email]').blur(function(){
+		if($(this).val().trim()==''){
+			$(this).next().html('请输入您的邮箱');
+			$(this).next().attr('class', 'error');
+		}
+	});
+
+	$('input[name=email]').blur(function(){
+		if(emailReg.test($(this).val().trim()))
+		{
+			$(this).next().html('邮箱OK');
+			$(this).next().attr('class', 'success');
+			isEmailOk = true;
+		}
+		else{
+			$(this).next().html('请输入正确的邮箱');
+			$(this).next().attr('class','error');
+		}
+	});
+
+	$('#form').submit(function(){
+		if(isTextOk&&isAuthorOk&&isEmailOk){
+			return true;
+		}
+		else{
+			return false;
+		}
+	})
+
 </script>
 
 

@@ -213,7 +213,7 @@ textarea {
 	border: 1px solid #d3d3d3;
 	background-color: #f5f4df;
 	padding: .5em;
-	width: 90%;
+	width: 80%;
 }
 
 input {
@@ -226,4 +226,22 @@ input {
 input#comment-submit {
 	width: 10em;
 	text-align: center;
+}
+
+input#comment-submit:hover {
+	cursor : pointer;
+}
+
+input:required:focus,
+textarea:required:focus {
+  outline: 0;
+  box-shadow: 0 0 2px 1px white;
+}
+
+.error {
+	color : red;
+}
+
+.success {
+	color : green;
 }
