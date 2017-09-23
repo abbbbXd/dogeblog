@@ -6,7 +6,7 @@ var cryptoStr = require('../config/crypto_config.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	var data = user.find(function(err, data){
+	var data = user.find({},null,{sort: {takeMesTime: -1}},function(err, data){
 		if(err){
 			console.log(err);
 		}
@@ -45,8 +45,12 @@ router.post('/getData', function(req, res) {
 	};
 
 	user.create(data,function(err,msg){
-		console.log(err);
-		console.log(msg);
+		if(err){
+			 return console.log(err);
+		}
+		else{
+			res.redirect('/saysomething');
+		}
 	});
 	// res.sendStatus(200);
 	// res.redirect('/saysomething');
