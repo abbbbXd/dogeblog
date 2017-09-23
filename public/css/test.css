@@ -161,7 +161,7 @@ body{
 
 .container{
 	/*position: relative;*/
-	margin: 40px 350px;
+	margin: 40px 20%;
 	background-color: #333;
 }
 
@@ -169,7 +169,7 @@ body{
 	text-align: left;
 	font-weight: normal;
 	margin: 5px auto 10px;
-	border-bottom: 2px solid black;
+	border-bottom: 1px solid white;
 }
 
 .container p{
@@ -244,4 +244,35 @@ textarea:required:focus {
 
 .success {
 	color : green;
+}
+
+.comment {
+	margin: 0 20%;
+	border-bottom: 1px dashed white;
+	color: grey;
+}
+
+.comment-title {
+	margin: 0 20%;
+	padding-bottom: 5px;
+	border-bottom: 1px solid white;
+}
+
+.comment-header {
+	margin-top: 1.6em;
+}
+
+.comment-content {
+	margin-left: 1em;
+	margin-top: 1.5em;
+	font-size: 1em;
+}
+
+.comment-footer {
+	width: 40%;
+	margin: 1.5em auto .5em 60%;
+}
+
+.message-content {
+	margin-left: 1em;
 }

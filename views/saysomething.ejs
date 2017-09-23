@@ -2,28 +2,54 @@
 
 <script type="text/javascript" src='./js/jquery.validate.min.js'></script>
 <!-- <script type="text/javascript" src='./js/messages_zh.min.js'></script> -->
-
+<div class='comment-title'><h1>留言（N条）</h1>	</div>
+	<%for (var i in data){%>
+		<div class="comment">
+				<div class="comment-header">
+					<p>
+						<span><span class='author'>
+							<%= data[i].author %>
+						</span> 说：</span>
+					</p>
+				</div>
+				<div class="comment-content">
+					<p>
+						<%= data[i].text %>
+					</p>
+				</div>
+				<div class="comment-footer">
+					<p>
+						<abbr class='takeMesTime' title='2017.2.12'> 
+							时间：<%= data[i].takeMesTime %>
+						</abbr>
+					</p>
+				</div>
+			</div>
+	<%
+		}
+	%>
 <div class="container">
-	<form action="/saysomething/getdata" method='post' id='form'>
+	<form action="/saysomething/getdata" method='post' id='postData'>
 		<h1>我要留言</h1>
-		<div class="line"></div>
-		<div>
-			<p>您的留言<</p>
-			<p><textarea id='comment-text' name='text' rows='10' cols='50' value placeholder="-必填"></textarea><span></span></p>
+		<div class="message-content">
+			<div>
+				<p>您的留言<</p>
+				<p><textarea id='comment-text' name='text' rows='10' cols='50' value placeholder="-必填"></textarea><span></span></p>
+			</div>
+			<div>
+				<p>您的大名：</p>
+				<input id="comment-author" name='author' size='30' value placeholder="-必填"><span></span>
+			</div>
+			<div>
+				<p>电子邮件：</p>
+				<input id="comment-email" name='email' size='30' value placeholder="-必填,不公开"><span></span>
+			</div>
+			<div>
+				<p><label for='comment-bake-cookie'>记住个人信息？</label><input type="checkbox" id="comment-bake-cookie"></p>
+			</div>
+			
+			<input type="submit" value="发表" id="comment-submit"><span class="hint">«-点击按钮</span>
 		</div>
-		<div>
-			<p>您的大名：</p>
-			<input id="comment-author" name='author' size='30' value placeholder="-必填"><span></span>
-		</div>
-		<div>
-			<p>电子邮件：</p>
-			<input id="comment-email" name='email' size='30' value placeholder="-必填,不公开"><span></span>
-		</div>
-		<div>
-			<p><label for='comment-bake-cookie'>记住个人信息？</label><input type="checkbox" id="comment-bake-cookie"></p>
-		</div>
-		
-		<input type="submit" value="发表" id="comment-submit"><span class="hint">«-点击按钮</span>
 	</form>
 </div>
 
@@ -48,10 +74,12 @@
 // 		}
 // 	})	
 // })
+	//3个空是否都通过表单验证
 	var isTextOk = false;
 	var isAuthorOk = false;
 	var isEmailOk = false;
 
+	//检验邮箱的正则
 	var emailReg = /^[A-Za-z0-9]+([A-Za-z0-9_-]+)@[a-zA-Z0-9]+(\.[a-zA-Z]+)$/;
 
 	$('textarea[name=text]').blur(function(){
@@ -66,20 +94,29 @@
 	});
 
 	$('input[name=author]').blur(function(){
+		var username = this.value.trim();
 		if($(this).val().trim() == ''){
 			$(this).next().html('请输入您的大名');
 			$(this).next().attr('class', 'error');
+			return ;
 		}
-		else{
-			$(this).next().html('用户名OK');
-			$(this).next().attr('class', 'success');
+		obj = $(this);
 
-			isAuthorOk = true;
-		}
+		$.get('/saysomething/checkUser',{username:username},function(status){
+			if(status == 'ok'){
+				obj.next().html('用户名OK');
+				obj.next().attr('class','success');
+				isAuthorOk = true;
+			}
+			else{
+				obj.next().html('您的大名已被占用');
+				obj.next().attr('class','error');
+			}
+		})
 	});
 
 	$('input[name=email]').blur(function(){
-		if($(this).val().trim()==''){
+			if($(this).val().trim()==''){
 			$(this).next().html('请输入您的邮箱');
 			$(this).next().attr('class', 'error');
 		}
@@ -98,7 +135,8 @@
 		}
 	});
 
-	$('#form').submit(function(){
+	//仅当3个空都通过表单验证时，发送请求
+	$('#postData').submit(function(){
 		if(isTextOk&&isAuthorOk&&isEmailOk){
 			return true;
 		}
