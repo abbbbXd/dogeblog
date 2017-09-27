@@ -1,4 +1,5 @@
 var mongoose = require('../config/db_config.js');
+var dateformat = require('dateformatter').format;
 
 var userSchema = new mongoose.Schema({
 	author: {
@@ -12,12 +13,12 @@ var userSchema = new mongoose.Schema({
 		type: String
 	},
 	takeMesTime: {
-		type: Date,
-		default : Date.now
+		type: String,
+		default : dateformat('Y-m-d H:i:s')
 	},
 	lastTakeMesTime: {
-		type: Date,
-		default: Date.now
+		type: String,
+		default: dateformat('Y-m-d H:i:s')
 	}
 });
 

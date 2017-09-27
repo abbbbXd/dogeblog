@@ -2,14 +2,15 @@
 
 <script type="text/javascript" src='./js/jquery.validate.min.js'></script>
 <!-- <script type="text/javascript" src='./js/messages_zh.min.js'></script> -->
-<div class='comment-title'><h1>留言（N条）</h1>	</div>
+
+<div class='comment-title'><h1>留言</h1></div>
 	<%for (var i in data){%>
 		<div class="comment">
 				<div class="comment-header">
 					<p>
 						<span><span class='author'>
-							<%= data[i].author %>
-						</span>   说：</span>
+							<%= data[i].author%>
+						</span>说：</span>
 					</p>
 				</div>
 				<div class="comment-content">
@@ -18,10 +19,8 @@
 					</p>
 				</div>
 				<div class="comment-footer">
-					<p>
-						<abbr class='takeMesTime' title='2017.2.12'> 
-							时间：<%= data[i].takeMesTime %>
-						</abbr>
+					<p class='takeMesTime'>
+						时间：<%= data[i].takeMesTime %>
 					</p>
 				</div>
 			</div>

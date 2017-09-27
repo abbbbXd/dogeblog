@@ -1,5 +1,4 @@
 <%- include('header') -%>
-<body>
     <div class = "content">
         <h1>i am header h1</h1>
         <p>'You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words: 'Yes, we went to school in the sea, though you mayn't believe it—' 'I never said I didn't!' interrupted Alice. 'You did,' said the Mock Turtle.</p>
@@ -8,15 +7,54 @@
         </div>
     </div>
     
-    <!-- <div class='line'></div> -->
-
     <div class = "content">
         <h1>i am header h1</h1>
         <p>'You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words: 'Yes, we went to school in the sea, though you mayn't believe it—' 'I never said I didn't!' interrupted Alice. 'You did,' said the Mock Turtle.</p>
         <div class = "label-wrap">
-            <span class="label">post at 2017.9.14</span><span class="label label-default">default</span><span class="label label-primary">primary</span><span class="label label-success">success</span><span class="label label-info">info</span><span class="label label-warning">warning</span><span class="label label-danger">danger</span>
+            <span class="label">post at 2017.9.14</span><span class="label label-default">default</span><span class="label label-default">default</span>
         </div>
     </div>
-</body>
+
+    <!-- <div class='line'></div> -->
+<% for(var i in data){%>
+    <div class = "content">
+        <h1>
+            <%= data[i].title %>
+        </h1>
+        <p>
+            <%= data[i].text%>
+        </p>
+        <div class = "label-wrap">
+            <span class="label">post at 
+            <%= data[i].time %>
+            </span>
+            <% data[i].label.forEach(function(item){%>
+                <span class="label label-default"><%= item %></span>
+            <%
+                });
+            %>
+        </div>
+    </div>
+<%
+    }
+%>
 
 <%- include('footer') -%>
+
+
+<!-- <ul>
+    <li class='label label-default'>default</li>
+    <li class='label label-primary'>primary</li>
+    <li class='label label-success'>success</li>
+    <li class='label label-info'>info</li>
+    <li class='label label-warning'>warning</li>
+    <li class='label label-danger'>danger</li>
+</ul>
+
+
+<span class="label label-danger">danger</span>
+                <span class="label label-warning">warning</span>
+                <span class="label label-info">info</span>
+                <span class="label label-success">success</span>
+                <span class="label label-primary">primary</span>
+                <span class="label label-default">default</span> -->
