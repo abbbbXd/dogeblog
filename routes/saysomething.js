@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 
 var user = require('../models/user.js');
 var cryptoStr = require('../config/crypto_config.js');
@@ -38,10 +39,12 @@ router.post('/getData', function(req, res) {
 
 	//post返回来的数据
 	var data = {
-		author : req.body.author,
-		text : req.body.text,
+		author: req.body.author,
+		text: req.body.text,
 		//邮箱的加密处理
-		email : cryptoStr(req.body.email)
+		email: cryptoStr(req.body.email),
+		takeMesTime: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+		lastTakeMesTime: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
 	};
 
 	user.create(data,function(err,msg){

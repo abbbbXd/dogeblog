@@ -1,5 +1,7 @@
 var mongoose = require('../config/db_config.js');
-var dateformat = require('dateformatter').format;
+var moment = require('moment');
+
+var timestamp = Date.parse(new Date());
 
 var blogSchema = new mongoose.Schema({
 	title: {
@@ -10,7 +12,7 @@ var blogSchema = new mongoose.Schema({
 	},
 	time: {
 		type: String,
-		date: dateformat('Y-m-d H:i:s')
+		date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
 	},
 	label: {
 		type: Array
