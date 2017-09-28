@@ -19,6 +19,10 @@ var userSchema = new mongoose.Schema({
 	lastTakeMesTime: {
 		type: String,
 		default: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+	},
+	ip: {
+		type: String,
+		default: null
 	}
 });
 

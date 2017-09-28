@@ -36,6 +36,11 @@ router.get('/checkUser', function(req,res){
 
 router.post('/getData', function(req, res) {
 	//可以检验数据的安全性 CSRF
+	// console.log(req);
+	// var ipFromReq = req.connection.remoteAddress;
+	// var indexOfColon = ipFromReq.lastIndexOf(':');
+	// var ip = ipFromReq.substring(indexOfColon+1,ipFromReq.length);
+	console.log(ip);
 
 	//post返回来的数据
 	var data = {
@@ -44,7 +49,8 @@ router.post('/getData', function(req, res) {
 		//邮箱的加密处理
 		email: cryptoStr(req.body.email),
 		takeMesTime: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-		lastTakeMesTime: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+		lastTakeMesTime: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+		ip: req.body.ip
 	};
 
 	user.create(data,function(err,msg){
