@@ -6,13 +6,14 @@ var secret = 'fish';
 
 function cryptoStr(str){
 	//sha1的加密方式，secret为口令
-	var hmac = crypto.createHmac('sha1',secret);
+	var cipher = crypto.createCipher('aes192',secret);
 
 	//加密，16进制
-	var newStr = hmac.update(str).digest('hex');
+	var crypted = cipher.update(str,'utf-8','hex');
 
+	crypted += cipher.final('hex');
 	//返回
-	return newStr;
+	return crypted;
 }
 
 module.exports = cryptoStr;

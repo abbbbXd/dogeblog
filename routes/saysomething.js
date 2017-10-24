@@ -1,6 +1,7 @@
 var express = require('express');
-var router = express.Router();
 var moment = require('moment');
+
+var router = express.Router();
 
 var user = require('../models/user.js');
 var cryptoStr = require('../config/crypto_config.js');
@@ -36,11 +37,7 @@ router.get('/checkUser', function(req,res){
 
 router.post('/getData', function(req, res) {
 	//可以检验数据的安全性 CSRF
-	// console.log(req);
-	// var ipFromReq = req.connection.remoteAddress;
-	// var indexOfColon = ipFromReq.lastIndexOf(':');
-	// var ip = ipFromReq.substring(indexOfColon+1,ipFromReq.length);
-	// console.log(ip);
+	console.log(typeof(req.body.text));
 
 	//post返回来的数据
 	var data = {
