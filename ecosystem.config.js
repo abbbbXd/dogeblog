@@ -23,7 +23,7 @@ module.exports = {
       host : '173.82.119.121',
       ref  : 'origin/master',
       repo : 'git@github.com:abbbbXd/dogeblog.git',
-      path : '/var/project/dogeblog',
+      path : '/var/www/production',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     },
     dev : {
@@ -31,7 +31,7 @@ module.exports = {
       host : '173.82.119.121',
       ref  : 'origin/master',
       repo : 'git@github.com:abbbbXd/dogeblog.git',
-      path : '/var/project/dogeblog',
+      path : '/var/www/development',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
       env  : {
         NODE_ENV: 'dev'
