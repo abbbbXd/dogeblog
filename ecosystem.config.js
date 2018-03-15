@@ -3,6 +3,16 @@ module.exports = {
    * Application configuration section
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
+  "apps" : [{
+		"name" : "dogeblog", //项目的名字
+		"script" : "app.js",  //项目主入口（Node.js）
+		"env": {
+			"COMMON_VARIABLE": "true"
+		},
+		"env_production" : {
+			"NODE_ENV": "production"
+		}
+	}],
   /**
    * Deployment section
    * http://pm2.keymetrics.io/docs/usage/deployment/
